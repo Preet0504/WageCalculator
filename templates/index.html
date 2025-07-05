@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wage Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Wage Calculator</h1>
+            <div class="wage-summary">
+                <div class="wage-card">
+                    <h3>Total Hours</h3>
+                    <p id="total-hours">0.00</p>
+                </div>
+                <div class="wage-card">
+                    <h3>Total Wage</h3>
+                    <p id="total-wage">₹0.00</p>
+                </div>
+                <div class="wage-card">
+                    <h3>Avg Hourly Rate</h3>
+                    <p id="hourly-rate">₹50.00</p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev-month">&lt;</button>
+                    <h2 id="current-month">January 2024</h2>
+                    <button id="next-month">&gt;</button>
+                </div>
+                
+                <div class="calendar-controls">
+                    <a href="/report" class="btn-report">📊 View Report</a>
+                    <button id="generate-report" class="btn-report">📥 Download CSV</button>
+                    <button id="reset-month" class="btn-reset">🗑️ Reset Month</button>
+                </div>
+                
+                <div class="calendar-grid">
+                    <div class="calendar-days">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div id="calendar-dates" class="calendar-dates"></div>
+                </div>
+            </div>
+
+            <!-- Time Entry Modal -->
+            <div id="time-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="modal-date">Enter Time for <span id="selected-date"></span></h2>
+                    
+                    <form id="time-form">
+                        <div class="time-inputs">
+                            <div class="form-group">
+                                <label for="in-time">🕐 IN Time:</label>
+                                <div class="time-input-wrapper">
+                                    <input type="time" id="in-time" name="in-time" required>
+                                    <div class="time-suggestions">
+                                        <button type="button" class="time-suggestion" data-time="09:00">9:00 AM</button>
+                                        <button type="button" class="time-suggestion" data-time="10:00">10:00 AM</button>
+                                        <button type="button" class="time-suggestion" data-time="11:00">11:00 AM</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="out-time">🕕 OUT Time:</label>
+                                <div class="time-input-wrapper">
+                                    <input type="time" id="out-time" name="out-time" required>
+                                    <div class="time-suggestions">
+                                        <button type="button" class="time-suggestion" data-time="17:00">5:00 PM</button>
+                                        <button type="button" class="time-suggestion" data-time="18:00">6:00 PM</button>
+                                        <button type="button" class="time-suggestion" data-time="19:00">7:00 PM</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rate-input">
+                            <div class="form-group">
+                                <label for="hourly-rate-input">💰 Hourly Rate (₹):</label>
+                                <input type="number" id="hourly-rate-input" name="hourly-rate" value="50" min="0" step="0.01" required>
+                                <small>Overtime after 6 PM is 1.5x this rate</small>
+                                <small id="sunday-note" style="display: none; color: #ff6b35; font-weight: bold;">⚠️ All Sunday hours are treated as overtime (1.5x rate)</small>
+                            </div>
+                        </div>
+                        
+                        <div class="hours-summary">
+                            <div class="hours-display-card">
+                                <h3>Regular Hours</h3>
+                                <p id="regular-hours-display">0.00</p>
+                                <small>(After 1h recess deduction)</small>
+                            </div>
+                            <div class="hours-display-card">
+                                <h3>Overtime Hours</h3>
+                                <p id="overtime-hours-display">0.00</p>
+                                <small>(After 6 PM)</small>
+                            </div>
+                            <div class="wage-display-card">
+                                <h3>Daily Wage</h3>
+                                <p id="daily-wage">₹0.00</p>
+                                <small id="wage-breakdown"></small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">💾 Save Entry</button>
+                            <button type="button" class="btn-absence" id="absence-btn">🚫 Mark Absent</button>
+                            <button type="button" class="btn-reset-daily" id="reset-daily-btn">🔄 Reset Day</button>
+                            <button type="button" class="btn-secondary" id="cancel-btn">❌ Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

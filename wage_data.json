@@ -1,0 +1,80 @@
+{
+  "2025-07-05": {
+    "in_time": "09:00",
+    "out_time": "19:00",
+    "hours": 9.0,
+    "regular_hours": 8.0,
+    "overtime_hours": 1.0,
+    "raw_hours": 10.0,
+    "hourly_rate": 50,
+    "regular_wage": 400.0,
+    "overtime_wage": 75.0,
+    "total_wage": 475.0,
+    "absent": false
+  },
+  "2025-07-06": {
+    "in_time": "09:00",
+    "out_time": "18:00",
+    "hours": 8.0,
+    "regular_hours": 8.0,
+    "overtime_hours": 0,
+    "raw_hours": 9.0,
+    "hourly_rate": 50,
+    "regular_wage": 400.0,
+    "overtime_wage": 0.0,
+    "total_wage": 400.0,
+    "absent": false
+  },
+  "2025-07-07": {
+    "in_time": "10:00",
+    "out_time": "17:00",
+    "hours": 6.0,
+    "regular_hours": 6.0,
+    "overtime_hours": 0,
+    "raw_hours": 7.0,
+    "hourly_rate": 50,
+    "regular_wage": 300.0,
+    "overtime_wage": 0.0,
+    "total_wage": 300.0,
+    "absent": false
+  },
+  "2025-07-08": {
+    "in_time": "11:00",
+    "out_time": "17:00",
+    "hours": 5.0,
+    "regular_hours": 5.0,
+    "overtime_hours": 0,
+    "raw_hours": 6.0,
+    "hourly_rate": 50,
+    "regular_wage": 250.0,
+    "overtime_wage": 0.0,
+    "total_wage": 250.0,
+    "absent": false
+  },
+  "2025-07-09": {
+    "in_time": "09:00",
+    "out_time": "19:00",
+    "hours": 9.0,
+    "regular_hours": 8.0,
+    "overtime_hours": 1.0,
+    "raw_hours": 10.0,
+    "hourly_rate": 50,
+    "regular_wage": 400.0,
+    "overtime_wage": 75.0,
+    "total_wage": 475.0,
+    "absent": false
+  },
+  "2025-07-10": {
+    "in_time": "11:00",
+    "out_time": "19:00",
+    "hours": 7.0,
+    "regular_hours": 6.0,
+    "overtime_hours": 1.0,
+    "raw_hours": 8.0,
+    "hourly_rate": 50,
+    "regular_wage": 300.0,
+    "overtime_wage": 75.0,
+    "total_wage": 375.0,
+    "absent": false
+  }
+}

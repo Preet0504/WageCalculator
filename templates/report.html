@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wage Report - Wage Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>📊 Wage Report</h1>
+                <div class="header-actions">
+                    <a href="/" class="btn-back">← Back to Calendar</a>
+                    <button id="download-csv" class="btn-download">📥 Download CSV</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Summary Cards -->
+            <div class="summary-section">
+                <div class="summary-card">
+                    <h3>Total Work Days</h3>
+                    <p id="total-work-days">0</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Total Absent Days</h3>
+                    <p id="total-absent-days">0</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Total Hours</h3>
+                    <p id="total-hours">0.00</p>
+                    <small>(After 1h recess deduction)</small>
+                    <small style="color: #ff6b35; font-weight: bold;">All Sunday hours are overtime (1.5x rate)</small>
+                </div>
+                <div class="summary-card">
+                    <h3>Total Wage</h3>
+                    <p id="total-wage">₹0.00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Average Hours/Day</h3>
+                    <p id="avg-hours">0.00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Average Wage/Day</h3>
+                    <p id="avg-wage">₹0.00</p>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3>Work vs Absent Days</h3>
+                    <canvas id="workAbsentChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Daily Hours Trend</h3>
+                    <canvas id="hoursTrendChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Daily Wage Trend</h3>
+                    <canvas id="wageTrendChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Weekly Summary</h3>
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="table-section">
+                <h3>Detailed Report</h3>
+                <div class="table-container">
+                    <table id="report-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Day</th>
+                                <th>IN Time</th>
+                                <th>OUT Time</th>
+                                <th>Raw Hours</th>
+                                <th>Regular Hours</th>
+                                <th>Overtime Hours</th>
+                                <th>Hourly Rate</th>
+                                <th>Regular Wage (₹)</th>
+                                <th>Overtime Wage (₹)</th>
+                                <th>Total Wage (₹)</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="report-tbody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='report.js') }}"></script>
+</body>
+</html> 
