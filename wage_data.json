@@ -12,19 +12,6 @@
     "total_wage": 475.0,
     "absent": false
   },
-  "2025-07-06": {
-    "in_time": "09:00",
-    "out_time": "18:00",
-    "hours": 8.0,
-    "regular_hours": 8.0,
-    "overtime_hours": 0,
-    "raw_hours": 9.0,
-    "hourly_rate": 50,
-    "regular_wage": 400.0,
-    "overtime_wage": 0.0,
-    "total_wage": 400.0,
-    "absent": false
-  },
   "2025-07-07": {
     "in_time": "10:00",
     "out_time": "17:00",
@@ -76,5 +63,15 @@
     "overtime_wage": 75.0,
     "total_wage": 375.0,
     "absent": false
+  },
+  "2025-07-13": {
+    "in_time": "00:00",
+    "out_time": "00:00",
+    "hours": 0,
+    "overtime_hours": 0,
+    "regular_hours": 0,
+    "hourly_rate": 50,
+    "total_wage": 0,
+    "absent": true
   }
 }

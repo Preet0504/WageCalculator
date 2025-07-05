@@ -58,6 +58,7 @@ def save_entry():
             'overtime_hours': 0,
             'regular_hours': 0,
             'hourly_rate': hourly_rate,
+            'total_wage': 0,
             'absent': True
         }
     else:
