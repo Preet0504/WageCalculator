@@ -71,8 +71,49 @@ class WageCalculator {
         document.getElementById('out-time').addEventListener('input', () => this.calculateHours());
         document.getElementById('hourly-rate-input').addEventListener('input', () => this.calculateHours());
         
+        // Mobile-specific improvements
+        this.setupMobileImprovements();
+        
         // Time suggestion buttons
         this.setupTimeSuggestions();
+    }
+    
+    setupMobileImprovements() {
+        // Prevent zoom on input focus (mobile)
+        const inputs = document.querySelectorAll('input[type="time"], input[type="number"]');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                // Prevent zoom on iOS
+                if (window.innerWidth <= 768) {
+                    input.style.fontSize = '16px';
+                }
+            });
+            
+            input.addEventListener('blur', () => {
+                // Restore font size
+                if (window.innerWidth <= 768) {
+                    input.style.fontSize = '';
+                }
+            });
+        });
+        
+        // Improve touch scrolling
+        const modalContent = document.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.addEventListener('touchstart', (e) => {
+                e.stopPropagation();
+            }, { passive: true });
+        }
+        
+        // Prevent body scroll when modal is open
+        const modal = document.getElementById('time-modal');
+        modal.addEventListener('show', () => {
+            document.body.style.overflow = 'hidden';
+        });
+        
+        modal.addEventListener('hide', () => {
+            document.body.style.overflow = '';
+        });
     }
     
     setupTimeSuggestions() {
@@ -235,6 +276,9 @@ class WageCalculator {
         this.calculateHours();
         document.getElementById('time-modal').style.display = 'block';
         
+        // Prevent body scroll on mobile
+        document.body.style.overflow = 'hidden';
+        
         // Re-setup time suggestions for the new modal
         this.setupTimeSuggestions();
     }
@@ -242,6 +286,9 @@ class WageCalculator {
     closeModal() {
         document.getElementById('time-modal').style.display = 'none';
         this.selectedDate = null;
+        
+        // Restore body scroll
+        document.body.style.overflow = '';
     }
     
     calculateHours() {
